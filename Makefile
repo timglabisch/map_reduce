@@ -1,3 +1,9 @@
+crosscompile:
+	rustup target add x86_64-unknown-linux-musl
+	cd reducer && cargo build --release --target=x86_64-unknown-linux-musl && cd ..
+	cd mapper && cargo build --release --target=x86_64-unknown-linux-musl && cd ..
+	cd producer && cargo build --release --target=x86_64-unknown-linux-musl && cd ..
+
 build_reducer:
 	cd reducer && cargo build --release && cd ..
 
