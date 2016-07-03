@@ -1,0 +1,26 @@
+<?php
+
+
+$lastNumber = null;
+$lastCount = 0;
+while (($line = fgets(STDIN)) !== false) {
+
+    list($number, $count) = explode("\t", $line);
+
+    if ($lastNumber === null) {
+        $lastNumber = $number;
+    }
+
+    if ($lastNumber === $number) {
+        $lastCount++;
+        continue;
+    }
+
+    echo $lastNumber."\t".$lastCount."\n";
+    $lastCount = 1;
+    $lastNumber = $number;
+}
+
+if ($lastCount && $lastNumber) {
+    echo $lastNumber."\t".$lastCount."\n";
+}
